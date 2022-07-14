@@ -1,0 +1,7 @@
+.dart_tool
+.packages
+config.src.yaml
+config.yaml
+docker-compose.yml
+Dockerfile
+pubspec.lock

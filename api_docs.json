@@ -1,0 +1,575 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "revision_backend",
+    "description": "Dart backend for Revision app.",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "[redacted]"
+    }
+  ],
+  "paths": {
+    "/ping": {},
+    "/sheet": {
+      "get": {
+        "tags": [
+          "Sheet"
+        ],
+        "operationId": "getAllSheets",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sheet"
+        ],
+        "operationId": "addSheet",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sheet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Sheet"
+        ],
+        "operationId": "updateSheet",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sheet"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/sheet/{sheetId}/topics": {
+      "parameters": [
+        {
+          "name": "sheetId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        }
+      ],
+      "get": {
+        "tags": [
+          "Topic"
+        ],
+        "operationId": "getAllTopicsBySheet",
+        "parameters": [
+          {
+            "name": "sheetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Topic"
+        ],
+        "operationId": "addTopicToSheet",
+        "parameters": [
+          {
+            "name": "sheetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Topic"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/topics": {
+      "get": {
+        "tags": [
+          "Topic"
+        ],
+        "operationId": "getAllTopics",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/topics/{topicId}": {
+      "parameters": [
+        {
+          "name": "topicId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        }
+      ],
+      "put": {
+        "tags": [
+          "Topic"
+        ],
+        "operationId": "updateTopic",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Topic"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/questions": {
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "getAllQuestions",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "addQuestion",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Question"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/questions/{questionId}": {
+      "parameters": [
+        {
+          "name": "questionId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        }
+      ],
+      "put": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "updateQuestion",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Question"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "deleteQuestion",
+        "parameters": [
+          {
+            "name": "questionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/topic/{topicId}/questions": {
+      "parameters": [
+        {
+          "name": "topicId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        }
+      ],
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "getQuestionsByTopic",
+        "parameters": [
+          {
+            "name": "topicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/sheet/{sheetId}/questions": {
+      "parameters": [
+        {
+          "name": "sheetId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        }
+      ],
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "getQuestionsBySheet",
+        "parameters": [
+          {
+            "name": "sheetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/sheet/{sheetId}/topic/{topicId}/questions": {
+      "parameters": [
+        {
+          "name": "sheetId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        },
+        {
+          "name": "topicId",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          },
+          "explode": false,
+          "allowReserved": false
+        }
+      ],
+      "get": {
+        "tags": [
+          "Question"
+        ],
+        "operationId": "getQuestionsBySheetAndTopic",
+        "parameters": [
+          {
+            "name": "sheetId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "topicId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Question": {
+        "title": "Question",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "id",
+            "type": "string",
+            "description": "This is the primary identifier for this object.\n",
+            "nullable": false
+          },
+          "title": {
+            "title": "title",
+            "type": "string",
+            "nullable": false
+          },
+          "isSolved": {
+            "title": "isSolved",
+            "type": "boolean",
+            "nullable": false
+          },
+          "isFavourite": {
+            "title": "isFavourite",
+            "type": "boolean",
+            "nullable": false
+          },
+          "description": {
+            "title": "description",
+            "type": "string",
+            "nullable": false
+          },
+          "note": {
+            "title": "note",
+            "type": "string",
+            "nullable": false
+          },
+          "code": {
+            "title": "code",
+            "type": "string",
+            "nullable": false
+          },
+          "url": {
+            "title": "url",
+            "type": "string",
+            "nullable": false
+          },
+          "topic": {
+            "title": "topic",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "sheet": {
+            "title": "sheet",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": ""
+      },
+      "Sheet": {
+        "title": "Sheet",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "id",
+            "type": "string",
+            "description": "This is the primary identifier for this object.\n",
+            "nullable": false
+          },
+          "title": {
+            "title": "title",
+            "type": "string",
+            "nullable": false
+          },
+          "sheetTopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SheetTopic"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "description": ""
+      },
+      "Topic": {
+        "title": "Topic",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "id",
+            "type": "string",
+            "description": "This is the primary identifier for this object.\n",
+            "nullable": false
+          },
+          "title": {
+            "title": "title",
+            "type": "string",
+            "nullable": false
+          },
+          "sheetTopics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SheetTopic"
+            },
+            "nullable": true,
+            "readOnly": true
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Question"
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "description": ""
+      },
+      "SheetTopic": {
+        "title": "SheetTopic",
+        "type": "object",
+        "properties": {
+          "id": {
+            "title": "id",
+            "type": "integer",
+            "description": "This is the primary identifier for this object.\n",
+            "nullable": false
+          },
+          "sheet": {
+            "title": "sheet",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          },
+          "topic": {
+            "title": "topic",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "description": ""
+      }
+    }
+  }
+}
