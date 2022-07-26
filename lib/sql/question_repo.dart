@@ -30,7 +30,9 @@ class QuestionsRepository {
 
   Future<Result<List<Question>>> getAllQuestions() async {
     try {
-      final query = Query<Question>(context);
+      final query = Query<Question>(context)
+        ..sortBy((q) => q.id, QuerySortOrder.ascending);
+
       final questions = await query.fetch();
 
       return Result(data: questions);
@@ -88,7 +90,8 @@ class QuestionsRepository {
     try {
       final query = Query<Question>(context)
         ..where((q) => q.topic?.id).equalTo(topicId)
-        ..where((q) => q.sheet?.id).equalTo(sheetId);
+        ..where((q) => q.sheet?.id).equalTo(sheetId)
+        ..sortBy((q) => q.id, QuerySortOrder.ascending);
 
       final questions = await query.fetch();
       return Result(data: questions);
